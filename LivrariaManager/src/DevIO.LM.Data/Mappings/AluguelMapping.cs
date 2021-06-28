@@ -10,17 +10,16 @@ namespace DevIO.LM.Data.Mappings
         {
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.CodAluguel)
-                .IsRequired()
-                .HasColumnType("varchar(200)");
 
 
-            // 1 : N => Aluguel : Usuarios
+
+
+            ////1 : N => Aluguel : Usuarios
             //builder.HasMany(f => f.Usuarios)
             //    .WithOne(p => p.Aluguel)
             //    .HasForeignKey(p => p.AluguelId);
 
-            // 1 : N => Aluguel : Livros
+            //// 1 : N => Aluguel : Livros
             //builder.HasMany(f => f.Livros)
             //    .WithOne(p => p.Aluguel)
             //    .HasForeignKey(p => p.AluguelId);

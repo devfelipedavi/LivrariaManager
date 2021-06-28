@@ -9,9 +9,7 @@ namespace DevIO.LM.Business.Models.Validations
     {
         public AluguelValidation()
         {
-            RuleFor(f => f.CodAluguel)
-                .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido");
-
+            
             RuleFor(f => f.UsuarioId)
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido");
 

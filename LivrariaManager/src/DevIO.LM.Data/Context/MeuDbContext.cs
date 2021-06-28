@@ -16,8 +16,7 @@ namespace DevIO.LM.Data.Context
         }
 
         public DbSet<Aluguel> Alugueis { get; set; }
-        public DbSet<Editora> Editoras { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Editora> Editoras { get; set; }        
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
@@ -36,51 +35,51 @@ namespace DevIO.LM.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        
+
 
         //??
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-        {
-            //foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataAluguel") != null))
-            //{
-            //    if (entry.State == EntityState.Added)
-            //    {
-            //        entry.Property("DataAluguel").CurrentValue = DateTime.Now;
-            //    }
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        //{
+        //    //foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataAluguel") != null))
+        //    //{
+        //    //    if (entry.State == EntityState.Added)
+        //    //    {
+        //    //        entry.Property("DataAluguel").CurrentValue = DateTime.Now;
+        //    //    }
 
-            //    if (entry.State == EntityState.Modified)
-            //    {
-            //        entry.Property("DataAluguel").IsModified = false;
-            //    }
-            //}
+        //    //    if (entry.State == EntityState.Modified)
+        //    //    {
+        //    //        entry.Property("DataAluguel").IsModified = false;
+        //    //    }
+        //    //}
 
-            //foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataDevolucao") != null))
-            //{
-            //    if (entry.State == EntityState.Added)
-            //    {
-            //        entry.Property("DataDevolucao").CurrentValue = DateTime.Now;
-            //    }
+        //    //foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataDevolucao") != null))
+        //    //{
+        //    //    if (entry.State == EntityState.Added)
+        //    //    {
+        //    //        entry.Property("DataDevolucao").CurrentValue = DateTime.Now;
+        //    //    }
 
-            //    if (entry.State == EntityState.Modified)
-            //    {
-            //        entry.Property("DataDevolucao").IsModified = false;
-            //    }
-            //}
+        //    //    if (entry.State == EntityState.Modified)
+        //    //    {
+        //    //        entry.Property("DataDevolucao").IsModified = false;
+        //    //    }
+        //    //}
 
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Lancamento") != null))
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("Lancamento").CurrentValue = DateTime.Now;
-                }
+        //    foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Lancamento") != null))
+        //    {
+        //        if (entry.State == EntityState.Added)
+        //        {
+        //            entry.Property("Lancamento").CurrentValue = DateTime.Now;
+        //        }
 
-                if (entry.State == EntityState.Modified)
-                {
-                    entry.Property("Lancamento").IsModified = false;
-                }
-            }
+        //        if (entry.State == EntityState.Modified)
+        //        {
+        //            entry.Property("Lancamento").IsModified = false;
+        //        }
+        //    }
 
-            return base.SaveChangesAsync(cancellationToken);
-        }
+        //    return base.SaveChangesAsync(cancellationToken);
+        //}
     }
 }

@@ -9,22 +9,18 @@ namespace DevIO.LM.Business.Services
 {
     public class UsuarioService : BaseService, IUsuarioService
     {
-        private readonly IUsuarioRepository _usuarioRepository;
-        private readonly IEnderecoRepository _enderecoRepository;
+        private readonly IUsuarioRepository _usuarioRepository;        
 
         public UsuarioService(IUsuarioRepository usuarioRepository,
-                              IEnderecoRepository enderecoRepository,
                               INotificador notificador) : base(notificador)
         {
-            _usuarioRepository = usuarioRepository;
-            _enderecoRepository = enderecoRepository;
+            _usuarioRepository = usuarioRepository;          
         }
 
 
         public async Task Adicionar(Usuario usuario)
         {
-            if (!ExecutarValidacao(new UsuarioValidation(), usuario)
-                || !ExecutarValidacao(new EnderecoValidation(), usuario.Endereco)) return;
+            if (!ExecutarValidacao(new UsuarioValidation(), usuario)) return;
 
             if (_usuarioRepository.Buscar(f => f.Nome == usuario.Nome).Result.Any())
             {
@@ -47,36 +43,23 @@ namespace DevIO.LM.Business.Services
 
             await _usuarioRepository.Atualizar(usuario);
         }
-
-        public async Task AtualizarEndereco(Endereco endereco)
-        {
-            if (!ExecutarValidacao(new EnderecoValidation(), endereco)) return;
-
-            await _enderecoRepository.Atualizar(endereco);
-        }
+        
+       
 
         public async Task Remover(Guid id)
         {
-            if (_usuarioRepository.ObterUsuarioAlugueisEndereco(id).Result.Alugueis.Any())
+            if (_usuarioRepository.ObterUsuarioAlugueis(id).Result.Alugueis.Any())
             {
                 Notificar("O usuário possui emprestimo de livros cadastrados!");
                 return;
-            }
-
-            var endereco = await _enderecoRepository.ObterEnderecoPorUsuario(id);
-
-            if (endereco != null)
-            {
-                await _enderecoRepository.Remover(endereco.Id);
-            }
+            } 
 
             await _usuarioRepository.Remover(id);
         }
 
         public void Dispose()
         {
-            _usuarioRepository?.Dispose();
-            _enderecoRepository?.Dispose();
+            _usuarioRepository?.Dispose();            
         }
 
     }

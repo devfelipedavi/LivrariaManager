@@ -9,8 +9,7 @@ namespace DevIO.LM.App.AutoMapper
         public AutoMapperConfig()
         {
             CreateMap<Aluguel, AluguelViewModel>().ReverseMap();
-            CreateMap<Editora, EditoraViewModel>().ReverseMap();
-            CreateMap<Endereco, EnderecoViewModel>().ReverseMap();
+            CreateMap<Editora, EditoraViewModel>().ReverseMap();            
             CreateMap<Livro, LivroViewModel>().ReverseMap();
             CreateMap<Usuario, UsuarioViewModel>().ReverseMap();
         }

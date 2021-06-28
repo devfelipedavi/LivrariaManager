@@ -6,12 +6,11 @@ namespace DevIO.LM.Business.Models
 {
     public class Aluguel : Entity
     {
-        public int CodAluguel { get; set; }
-
         public Guid LivroId { get; set; }
         public Guid UsuarioId { get; set; }
 
         public DateTime DataAluguel { get; set; }
+        public DateTime DataPrevista { get; set; }
         public DateTime DataDevolucao { get; set; }
 
         public bool Ativo { get; set; }

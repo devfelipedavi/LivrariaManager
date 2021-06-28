@@ -18,9 +18,12 @@ namespace DevIO.LM.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(1000)");
 
-            builder.Property(p => p.Imagem)
+            builder.Property(p => p.Autor)
                 .IsRequired()
-                .HasColumnType("varchar(100)");
+                .HasColumnType("varchar(200)");
+
+            builder.Property(p => p.Lancamento)
+                .IsRequired();               
 
             builder.ToTable("Livros");
         }

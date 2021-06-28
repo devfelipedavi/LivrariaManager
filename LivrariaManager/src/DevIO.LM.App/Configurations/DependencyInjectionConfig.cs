@@ -15,7 +15,6 @@ namespace DevIO.LM.App.Configurations
             
             services.AddScoped<IAluguelRepository, AluguelRepository>();
             services.AddScoped<IEditoraRepository, EditoraRepository>();
-            services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 

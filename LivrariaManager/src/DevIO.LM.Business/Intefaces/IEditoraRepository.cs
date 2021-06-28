@@ -6,7 +6,7 @@ namespace DevIO.LM.Business.Intefaces
 {
     public interface IEditoraRepository : IRepository<Editora>
     {
-        Task<Editora> ObterEditoraEndereco(Guid id);
-        Task<Editora> ObterEditoraLivrosEndereco(Guid id);
+        Task<Editora> ObterEditora(Guid id);
+        Task<Editora> ObterEditoraLivros(Guid id);
     }
 }
