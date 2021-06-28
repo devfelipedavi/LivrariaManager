@@ -13,18 +13,16 @@ namespace DevIO.LM.Data.Repository
         {
         }
 
-        public async Task<Usuario> ObterUsuarioEndereco(Guid id)
+        public async Task<Usuario> ObterUsuario(Guid id)
         {
-            return await Db.Usuarios.AsNoTracking()
-                .Include(c => c.Endereco)
+            return await Db.Usuarios.AsNoTracking()                
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<Usuario> ObterUsuarioAlugueisEndereco(Guid id)
+        public async Task<Usuario> ObterUsuarioAlugueis(Guid id)
         {
             return await Db.Usuarios.AsNoTracking()
-                .Include(c => c.Alugueis)
-                .Include(c => c.Endereco)
+                .Include(c => c.Alugueis)                
                 .FirstOrDefaultAsync(c => c.Id == id);
         }        
     }

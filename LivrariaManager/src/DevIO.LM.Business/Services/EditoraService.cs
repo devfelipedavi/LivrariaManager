@@ -10,20 +10,17 @@ namespace DevIO.LM.Business.Services
     public class EditoraService : BaseService, IEditoraService
     {
         private readonly IEditoraRepository _editoraRepository;
-        private readonly IEnderecoRepository _enderecoRepository;
+        
 
-        public EditoraService(IEditoraRepository editoraRepository,
-                              IEnderecoRepository enderecoRepository,
+        public EditoraService(IEditoraRepository editoraRepository,                             
                               INotificador notificador) : base(notificador)
         {
-            _editoraRepository = editoraRepository;
-            _enderecoRepository = enderecoRepository;
+            _editoraRepository = editoraRepository;           
         }
 
         public async Task Adicionar(Editora editora)
         {
-            if (!ExecutarValidacao(new EditoraValidation(), editora)
-                || !ExecutarValidacao(new EnderecoValidation(), editora.Endereco)) return;
+            if (!ExecutarValidacao(new EditoraValidation(), editora)) return;
 
             if (_editoraRepository.Buscar(f => f.Nome == editora.Nome).Result.Any())
             {
@@ -45,37 +42,23 @@ namespace DevIO.LM.Business.Services
             }
 
             await _editoraRepository.Atualizar(editora);
-        }
-
-        public async Task AtualizarEndereco(Endereco endereco)
-        {
-            if (!ExecutarValidacao(new EnderecoValidation(), endereco)) return;
-
-            await _enderecoRepository.Atualizar(endereco);
-        }
+        }        
 
         public async Task Remover(Guid id)
         {
-            if (_editoraRepository.ObterEditoraLivrosEndereco(id).Result.Livros.Any())
+            if (_editoraRepository.ObterEditoraLivros(id).Result.Livros.Any())
             {
                 Notificar("A Editora possui livros cadastrados!");
                 return;
             }
-
-            var endereco = await _enderecoRepository.ObterEnderecoPorEditora(id);
-
-            if (endereco != null)
-            {
-                await _enderecoRepository.Remover(endereco.Id);
-            }
+            
 
             await _editoraRepository.Remover(id);
         }
 
         public void Dispose()
         {
-            _editoraRepository?.Dispose();
-            _enderecoRepository?.Dispose();
+            _editoraRepository?.Dispose();            
         }
     }
 }

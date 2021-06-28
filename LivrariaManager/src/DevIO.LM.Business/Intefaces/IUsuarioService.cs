@@ -8,8 +8,6 @@ namespace DevIO.LM.Business.Intefaces
     {
         Task Adicionar(Usuario usuario);
         Task Atualizar(Usuario usuario);
-        Task Remover(Guid id);
-
-        Task AtualizarEndereco(Endereco endereco);
+        Task Remover(Guid id);        
     }
 }

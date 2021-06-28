@@ -6,11 +6,12 @@ namespace DevIO.LM.Business.Models
     {
         public Guid EditoraId { get; set; }
 
-        public int CodLivro { get; set; }
-
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public string Autor { get; set; }
+
         public string Imagem { get; set; }
+
         public DateTime Lancamento { get; set; }
         public bool Ativo { get; set; }
 

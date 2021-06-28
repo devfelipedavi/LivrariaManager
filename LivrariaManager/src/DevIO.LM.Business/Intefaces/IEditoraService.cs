@@ -8,8 +8,6 @@ namespace DevIO.LM.Business.Intefaces
     {
         Task Adicionar(Editora editora);
         Task Atualizar(Editora editora);
-        Task Remover(Guid id);
-
-        Task AtualizarEndereco(Endereco endereco);
+        Task Remover(Guid id);        
     }
 }

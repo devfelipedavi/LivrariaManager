@@ -13,18 +13,16 @@ namespace DevIO.LM.Data.Repository
         {
         }
 
-        public async Task<Editora> ObterEditoraEndereco(Guid id)
+        public async Task<Editora> ObterEditora(Guid id)
         {
-            return await Db.Editoras.AsNoTracking()
-                .Include(c => c.Endereco)
+            return await Db.Editoras.AsNoTracking()                
                 .FirstOrDefaultAsync(c => c.Id == id);
         }        
 
-        public async Task<Editora> ObterEditoraLivrosEndereco(Guid id)
+        public async Task<Editora> ObterEditoraLivros(Guid id)
         {
             return await Db.Editoras.AsNoTracking()
-                .Include(c => c.Livros)
-                .Include(c => c.Endereco)
+                .Include(c => c.Livros)                
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
     }

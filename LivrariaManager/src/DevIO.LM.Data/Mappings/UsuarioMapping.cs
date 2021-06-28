@@ -9,23 +9,26 @@ namespace DevIO.LM.Data.Mappings
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.HasKey(p => p.Id);
-
-            builder.Property(p => p.CodUsuario)
-            .IsRequired()
-            .HasColumnType("varchar(200)"); 
-
+            
             builder.Property(p => p.Nome)
             .IsRequired()
             .HasColumnType("varchar(200)");
 
-            builder.Property(p => p.Email)
+            builder.Property(p => p.Endereco)
             .IsRequired()
             .HasColumnType("varchar(200)");
             
+            builder.Property(p => p.Estado)
+            .IsRequired()
+            .HasColumnType("varchar(50)");
 
-            // 1 : 1 => Usuario : Endereco
-            builder.HasOne(f => f.Endereco)
-            .WithOne(e => e.Usuario);
+            builder.Property(p => p.Cidade)
+            .IsRequired()
+            .HasColumnType("varchar(50)");
+           
+            builder.Property(p => p.Email)
+            .IsRequired()
+            .HasColumnType("varchar(200)");   
 
             // 1 : N => Usuario : Alugueis
             builder.HasMany(f => f.Alugueis)

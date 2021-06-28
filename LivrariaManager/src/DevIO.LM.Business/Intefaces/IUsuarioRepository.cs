@@ -8,7 +8,7 @@ namespace DevIO.LM.Business.Intefaces
 {
     public interface IUsuarioRepository : IRepository<Usuario>
     {
-        Task<Usuario> ObterUsuarioEndereco(Guid id);
-        Task<Usuario> ObterUsuarioAlugueisEndereco(Guid id);
+        Task<Usuario> ObterUsuario(Guid id);
+        Task<Usuario> ObterUsuarioAlugueis(Guid id);
     }
 }
