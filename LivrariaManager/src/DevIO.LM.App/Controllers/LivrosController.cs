@@ -1,8 +1,15 @@
 ﻿using AutoMapper;
+using DevIO.LM.App.ViewModels;
 using DevIO.LM.Business.Intefaces;
+using DevIO.LM.Business.Models;
 using DevIO.LM.Business.Notificacoes;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace DevIO.LM.App.Controllers
 {
@@ -13,13 +20,13 @@ namespace DevIO.LM.App.Controllers
         private readonly ILivroRepository _livroRepository;
         private readonly IEditoraRepository _editoraRepository;
         private readonly ILivroService _livroService;
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
         public LivrosController(ILivroRepository livroRepository,
                                 IEditoraRepository editoraRepository,
                                 IMapper mapper,
                                 ILivroService livroService,
-                                Notificador notificador) : base(notificador)
+                                INotificador notificador) : base(notificador)
         {
             _livroRepository = livroRepository;
             _editoraRepository = editoraRepository;

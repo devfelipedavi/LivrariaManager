@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using DevIO.LM.Business.Intefaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.LM.App.Controllers
-{    
+{
     public class AlugueisController : BaseController
     {
         private readonly IAluguelRepository _aluguelRepository;
