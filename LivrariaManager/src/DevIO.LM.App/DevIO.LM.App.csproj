@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Livros\" />
     <Folder Include="wwwroot\imagens\" />
   </ItemGroup>
 
