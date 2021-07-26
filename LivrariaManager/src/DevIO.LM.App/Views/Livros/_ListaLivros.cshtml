@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DevIO.LM.App.ViewModels.LivroViewModel>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editora.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lancamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/imagens/@item.Imagem" alt="@item.Imagem" style="width: 70px; height: 100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editora.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @item.Lancamento.ToString("C")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+
+            <td class="text-right">
+                <a class="btn btn-warning" asp-controller="Livros" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam>Detailhes </a>
+                <a class="btn btn-info" asp-controller="Livros" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam>Editar </a>
+                <a class="btn btn-danger" asp-controller="Livros" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam>Excluir </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

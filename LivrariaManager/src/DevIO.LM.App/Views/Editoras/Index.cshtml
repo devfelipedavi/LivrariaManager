@@ -1,0 +1,14 @@
+﻿@using DevIO.LM.App.Extensions
+@model IEnumerable< DevIO.LM.App.ViewModels.EditoraViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Editoras";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Nova Editora</a>
+</p>
+
+<partial name="_ListaEditoras" />
